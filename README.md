@@ -85,6 +85,8 @@ Response Json-
 * The above can be achieved using spring webflux dependency 
 * WebTarget Vs WebClient. This application uses webtarget to connect to services. This can be enhanced to use netty clients. 
 
+## Sequence Diagram of Happy Path 
+![image](https://user-images.githubusercontent.com/21701931/124400582-6de98800-dcd8-11eb-8c93-a753f6f47a9e.png)
 
 
 
@@ -99,7 +101,7 @@ Response Json-
    Lets say each request takes 2sec which is the latency
    (No of concurrent connections per server * No of servers) = Total no of requests per sec * Latency
    No of servers = (Total no of requests per sec * Latency)/No of concurrent connections per server	
-```
+   ```
 * Load testing
   * Service should continue to have the same latency even if the load on the application increases indefinitely.
   * Used a postman collection runner to run multiple requests at the same time without any delay. 
@@ -109,6 +111,12 @@ Response Json-
 3. Cdn service timeouts/return errors
 4. Both the above services timeout/return errors
  
+## Results
+![image](https://user-images.githubusercontent.com/21701931/124400630-b30dba00-dcd8-11eb-9413-f8f3dfbef86a.png)
+![image](https://user-images.githubusercontent.com/21701931/124400669-1dbef580-dcd9-11eb-80f6-62734013c98e.png)
+
+## Postman Collection
+https://www.getpostman.com/collections/a62f58b40acc604ca5ea
 
 
 
