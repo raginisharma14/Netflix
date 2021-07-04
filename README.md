@@ -1,9 +1,9 @@
 # Netflix
-How to use the service
-Run below command 
-java - jar -Dspiring.profiles.active=CompatibleStreamService CompatibleStreamService-0.0.1-SNAPSHOT.jar
-Service will start on 8080 port on default tomcat embedded server
-POST URL - http://localhost:8080/compatibleStreamingData/
+* How to use the service
+   * Run below command 
+     * java - jar -Dspiring.profiles.active=CompatibleStreamService CompatibleStreamService-0.0.1-SNAPSHOT.jar
+     * Service will start on 8080 port on default tomcat embedded server
+     * POST URL - http://localhost:8080/compatibleStreamingData/
 ``` Json
 Request Json- {
     "movieId": 2,
@@ -92,11 +92,12 @@ Response Json-
 
 ## Non functional requirements
 * Performance and Latency
-When did a network call. It took ~2.3secs
-When Loaded from Cache. it took ~70msec
+  * When did a network call. It took ~2.3secs
+  * When Loaded from Cache. it took ~70msec
 
 * Scalability
 	* Currently this service is running on a single server, and can take upto 200 concurrent requests. However, in order to handle billion’s of requests, we need to increase servers.
+   ```
    Lets say each request takes 2sec which is the latency
    (No of concurrent connections per server * No of servers) = Total no of requests per sec * Latency
    No of servers = (Total no of requests per sec * Latency)/No of concurrent connections per server	
