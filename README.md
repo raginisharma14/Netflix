@@ -35,7 +35,6 @@ Response Json-
 }
 ```
 ## Assumptions Made
-
 * Size of the payload retrieved from stream service is within the memory limits of the system/application.
 * Responses from the given services are constant and not changing over time. Also as per Http specifications, Get API responses are idempotent, so assuming the same responses would be returned from stream/member/Cdn services for a particular input parameter.
 * Number of concurrent requests this application can handle is 200 as the embedded default tomcat server is being used.
@@ -44,7 +43,6 @@ Response Json-
 
 
 ## Proposed design and solution implemented so far
-
 * Checks if the member is valid or not. If a member is not valid, it will not return any streams, instead returns an error message which says member is not valid.
 * Memberservice and streamservice are executed in parallel as the two services are independent of each other and are mutually exclusive.
 * Used reactive programming-  observables and observer pattern in order to avoid I/O blocking calls such as network calls to member, stream and CDN services. 
@@ -101,6 +99,7 @@ Response Json-
    Lets say each request takes 2sec which is the latency
    (No of concurrent connections per server * No of servers) = Total no of requests per sec * Latency
    No of servers = (Total no of requests per sec * Latency)/No of concurrent connections per server	
+```
 * Load testing
   * Service should continue to have the same latency even if the load on the application increases indefinitely.
   * Used a postman collection runner to run multiple requests at the same time without any delay. 
